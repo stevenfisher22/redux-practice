@@ -10,7 +10,7 @@
     Hello World
 
     <!-- Redux CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
     <script>
 
         // Action
@@ -48,11 +48,46 @@
         }
 
         // Reducer
+        // State that Store has passed up
         function reducer(state, action) {
-
+            if (state === undefined) {
+                state = initialState
+            }
+            if (action.type === "ADD"){
+                let newPerson = {
+                    id: action.personData.id,
+                    name: action.personData.name,
+                    age: action.personData.age
+                }
+                return {
+                    ...state, 
+                    persons: state.persons.concat(newPerson)
+                }
+            }
+            else if (action.type === "REMOVE"){
+                return {
+                    ...state,
+                    persons: state.persons.filter(person => person.id != action.personID)
+                }
+            }
+            else {
+                return state;
+            }
         }
 
-        // var store = Redux.createStore()
+        var store = Redux.createStore(reducer);
+
+        store.subscribe(showState);
+
+        function showState(){
+            console.log(store.getState())
+        }
+
+        store.dispatch(addPerson(1, 'Steven', 33));
+        store.dispatch(addPerson(2, 'Savannah', 13));
+        store.dispatch(addPerson(3, 'Amanda', 33));
+
+        
 
     </script>
 </body>
