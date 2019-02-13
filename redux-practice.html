@@ -23,6 +23,18 @@
             }
         }
 
+        // Action Creator - What we typically deal with
+        function addPerson(id, name, age){
+            return {
+                type: "ADD",
+                personData: {
+                    id: id, 
+                    name: name,
+                    age: age
+                }
+            }
+        }
+
 
         // var store = Redux.createStore()
 
