@@ -14,14 +14,14 @@
     <script>
 
         // Action
-        var person = {
-            type: "ADD",
-            personData: {
-                id: 1,
-                name: "Steven",
-                age: 33
-            }
-        }
+        // var person = {
+        //     type: "ADD",
+        //     personData: {
+        //         id: 1,
+        //         name: "Steven",
+        //         age: 33
+        //     }
+        // }
 
         // Action Creator - What we typically deal with
         function addPerson(id, name, age){
@@ -35,6 +35,22 @@
             }
         }
 
+        function removePerson(id){
+            return {
+                type: "REMOVE", 
+                personID: id
+            }
+        }
+
+        // Initial State
+        const initialState = {
+            persons: []
+        }
+
+        // Reducer
+        function reducer(state, action) {
+
+        }
 
         // var store = Redux.createStore()
 
