@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.1/redux.js"></script>
     <script>
 
-        // Action
+        // Action - (Manual way of adding personData basically)
         // var person = {
         //     type: "ADD",
         //     personData: {
@@ -23,7 +23,7 @@
         //     }
         // }
 
-        // Action Creator - What we typically deal with
+        // Action Creator - What we typically use
         function addPerson(id, name, age){
             return {
                 type: "ADD",
@@ -87,7 +87,7 @@
         store.dispatch(addPerson(2, 'Savannah', 13));
         store.dispatch(addPerson(3, 'Amanda', 33));
 
-        
+        store.dispatch(removePerson(3));
 
     </script>
 </body>
